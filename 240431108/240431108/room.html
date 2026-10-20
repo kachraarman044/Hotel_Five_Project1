@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Rooms — Luxe Hotel & Dine</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/room.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <section id="Home">
+    <nav>
+      <div class="logo">
+        <img src="image/logo.png" alt="Luxe Logo" />
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-link services">
+          <a href="#">Services <i class="fa-solid fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+          <ul class="drop-down">
+            <li><a href="popular.html"><i class="fa-solid fa-star" style="color:#fac031;margin-right:7px;"></i>Popular Hotels</a></li>
+            <li><a href="our_food.html"><i class="fa-solid fa-utensils" style="color:#fac031;margin-right:7px;"></i>Our Food</a></li>
+            <li><a href="team.html"><i class="fa-solid fa-users" style="color:#fac031;margin-right:7px;"></i>Our Team</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="room.html" style="color:#fac031;">Our Rooms</a></li>
+        <li><a href="galary.html">Gallery</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li>
+          <div class="search-bar">
+            <form action="">
+              <input type="text" name="search" placeholder="Search..." />
+              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+        </li>
+        <li>
+          <a href="login.html">
+            <img src="image/login-avatar.png" height="32" width="32" alt="Login" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <!-- ===== PAGE HERO ===== -->
+  <div class="page-hero">
+    <img src="image/h1.jpg" alt="Rooms Banner" />
+    <div class="page-hero-content">
+      <h1>Our <span>Rooms</span></h1>
+      <p>Experience luxury and comfort in every room</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>Rooms</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ROOMS GRID ===== -->
+  <section class="rooms-section">
+    <div class="section-heading reveal">
+      <h2>Choose Your <span>Room</span></h2>
+      <p>Select from our premium collection of rooms and suites</p>
+      <div class="divider-line"><i class="fa-solid fa-bed"></i></div>
+    </div>
+
+    <div class="rooms-grid">
+      <!-- Room 1 -->
+      <div class="room-card reveal stagger-1">
+        <div class="room-img">
+          <img src="image/room-1.jpg" alt="Deluxe Suite" />
+          <div class="room-overlay">
+            <a href="room-1.html" class="room-view-btn">View Details</a>
+          </div>
+          <span class="room-badge">Popular</span>
+        </div>
+        <div class="room-info">
+          <h3>Deluxe Suite</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Ocean View, Floor 8</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 2 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 45 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹4,500</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 2 -->
+      <div class="room-card reveal stagger-2">
+        <div class="room-img">
+          <img src="image/room-2.jpg" alt="Executive Suite" />
+          <div class="room-overlay">
+            <a href="room-2.html" class="room-view-btn">View Details</a>
+          </div>
+          <span class="room-badge">New</span>
+        </div>
+        <div class="room-info">
+          <h3>Executive Suite</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Mountain View, Floor 12</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 3 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 60 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹7,200</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 3 -->
+      <div class="room-card reveal stagger-3">
+        <div class="room-img">
+          <img src="image/room-3.jpg" alt="Presidential Suite" />
+          <div class="room-overlay">
+            <a href="room-3.html" class="room-view-btn">View Details</a>
+          </div>
+          <span class="room-badge">Premium</span>
+        </div>
+        <div class="room-info">
+          <h3>Presidential Suite</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Sky View, Floor 20</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 4 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 120 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹15,000</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 4 -->
+      <div class="room-card reveal stagger-4">
+        <div class="room-img">
+          <img src="image/room-4.jpg" alt="Family Suite" />
+          <div class="room-overlay">
+            <a href="room-4.html" class="room-view-btn">View Details</a>
+          </div>
+        </div>
+        <div class="room-info">
+          <h3>Family Suite</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Garden View, Floor 5</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 5 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 85 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹9,800</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 5 -->
+      <div class="room-card reveal stagger-5">
+        <div class="room-img">
+          <img src="image/room-5.jpg" alt="Honeymoon Suite" />
+          <div class="room-overlay">
+            <a href="room-5.html" class="room-view-btn">View Details</a>
+          </div>
+          <span class="room-badge">Romantic</span>
+        </div>
+        <div class="room-info">
+          <h3>Honeymoon Suite</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Sunset View, Floor 15</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 2 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 55 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹12,500</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 6 -->
+      <div class="room-card reveal stagger-6">
+        <div class="room-img">
+          <img src="image/room-6.jpg" alt="Royal Suite" />
+          <div class="room-overlay">
+            <a href="room-6.html" class="room-view-btn">View Details</a>
+          </div>
+          <span class="room-badge">Luxury</span>
+        </div>
+        <div class="room-info">
+          <h3>Royal Suite</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Panoramic View, Floor 25</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 4 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 150 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹20,000</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 7 -->
+      <div class="room-card reveal stagger-1">
+        <div class="room-img">
+          <img src="image/h5.jpg" alt="Studio Room" />
+          <div class="room-overlay">
+            <a href="room-7.html" class="room-view-btn">View Details</a>
+          </div>
+          <span class="room-badge">Budget</span>
+        </div>
+        <div class="room-info">
+          <h3>Studio Room</h3>
+          <p><i class="fa-solid fa-location-dot"></i> City View, Floor 10</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 2 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 35 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹3,500</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 8 -->
+      <div class="room-card reveal stagger-2">
+        <div class="room-img">
+          <img src="image/h9.jpg" alt="Penthouse Suite" />
+          <div class="room-overlay">
+            <a href="room-8.html" class="room-view-btn">View Details</a>
+          </div>
+          <span class="room-badge">Elite</span>
+        </div>
+        <div class="room-info">
+          <h3>Penthouse Suite</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Rooftop, Floor 30</p>
+          <div class="room-meta">
+            <span><i class="fa-solid fa-user"></i> 6 Guests</span>
+            <span><i class="fa-solid fa-expand"></i> 200 m²</span>
+            <span><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+          <div class="room-amenities">
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><i class="fa-solid fa-tv"></i></span>
+            <span><i class="fa-solid fa-snowflake"></i></span>
+            <span><i class="fa-solid fa-bell-concierge"></i></span>
+          </div>
+          <div class="room-price">
+            <strong>₹35,000</strong><span>/night</span>
+            <a href="order.html" class="btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer_main">
+      <div class="footer_tag">
+        <h2>Locations</h2>
+        <p>Sri Lanka</p><p>USA</p><p>India</p><p>Japan</p><p>Italy</p>
+      </div>
+      <div class="footer_tag">
+        <h2>Quick Links</h2>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="our_food.html">Menu</a></p>
+        <p><a href="galary.html">Gallery</a></p>
+        <p><a href="order.html">Order</a></p>
+      </div>
+      <div class="footer_tag">
+        <h2>Contact</h2>
+        <p><img src="image/icons8-phone-48.png" alt="phone" />+91 93275 99254</p>
+        <p><img src="image/icons8-gmail-48.png" alt="email" /><a href="mailto:rathodmilan216@gmail.com">rathodmilan216@gmail.com</a></p>
+        <p><img src="image/google-maps.png" alt="location" />Mumbai, India</p>
+      </div>
+      <div class="footer_tag">
+        <h2>Our Services</h2>
+        <p>Fast Delivery</p><p>Easy Payments</p><p>24 × 7 Support</p><p>Free Cancellation</p>
+      </div>
+      <div class="footer_tag">
+        <h2>Follow Us</h2>
+        <div class="footer-socials">
+          <i class="fa-brands fa-facebook-f" title="Facebook"></i>
+          <i class="fa-brands fa-twitter" title="Twitter"></i>
+          <i class="fa-brands fa-instagram" title="Instagram"></i>
+          <i class="fa-brands fa-linkedin-in" title="LinkedIn"></i>
+          <i class="fa-brands fa-youtube" title="YouTube"></i>
+        </div>
+      </div>
+    </div>
+    <p class="end">
+      Design by <span><i class="fa-solid fa-face-grin"></i> Form Kapdiya</span>
+    </p>
+  </footer>
+
+  <button id="scrollTop" title="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 400); });
+    scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  </script>
+
+</body>
+</html>

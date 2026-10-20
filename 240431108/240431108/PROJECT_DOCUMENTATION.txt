@@ -1,0 +1,1812 @@
+LUXE HOTEL & DINE
+PROJECT DOCUMENTATION / REPORT CONTENT PACKAGE
+
+Prepared from the actual implementation in the project workspace.
+
+IMPORTANT NOTE
+- This project is a static hotel and food-ordering website with PHP + MySQL backend.
+- Some setup scripts refer to database "luxe_hotel", but the live runtime connection uses "food_website" in php/db_connect.php.
+- The documentation below follows the actual runtime implementation used by the webpage scripts: database = food_website.
+- Any information not directly verifiable from source code is explicitly labeled.
+- Sensitive values such as passwords, database credentials, and secrets are redacted as [REDACTED].
+
+
+1. PROJECT PROFILE
+
+1.1 Definition
+
+Project Name:
+Luxe Hotel & Dine
+
+Project Type:
+Static hospitality and food-ordering website with PHP/MySQL backend.
+
+Project Purpose:
+The project presents a hotel and dining website where users can view services, browse rooms, place food orders, register, log in, submit reviews, and proceed through a payment form. It is intended to digitize a portion of hospitality operations that would otherwise be manual.
+
+Problem Being Solved:
+The conventional workflow for hotel and food services often relies on manual communication, physical records, and informal processing. This project aims to replace some of those manual steps with digital forms and database-backed records.
+
+Target Users:
+- hotel visitors
+- customers looking for room information
+- users ordering food
+- users creating an account
+- reviewers submitting feedback
+
+Main Functionality:
+- homepage and service overview
+- room browsing and details
+- food ordering form
+- user registration
+- login system
+- payment submission form
+- guest review form
+- MySQL database integration
+
+Overall Workflow:
+A user visits the website, navigates through pages, registers or logs in, places food orders, continues to payment, and submits reviews. Data is sent from the browser to PHP scripts, which validate and store it in MySQL tables.
+
+Technology Architecture:
+- Frontend: HTML, CSS, JavaScript
+- Backend: PHP
+- Database: MySQL
+- Server environment: XAMPP-compatible Apache + MySQL
+- Communication: browser fetch() to PHP scripts
+
+Frontend:
+The frontend consists of static HTML pages and CSS/JavaScript for design, animations, validation, and navigation. Pages include index.html, about.html, room.html, room-1.html to room-8.html, order.html, payment.html, review.html, login.html, sign-up.html, galary.html, team.html, popular.html, our_food.html, burger.html.
+
+Backend:
+The backend is implemented in PHP files under php/:
+- db_connect.php
+- register.php
+- login.php
+- order.php
+- payment.php
+- review.php
+
+These scripts validate data, connect to MySQL, insert records, and return JSON responses.
+
+Database:
+Database schema and setup scripts are under php/database/ and php/luxe_hotel.sql. Tables created include:
+- users
+- orders
+- payments
+- reviews
+- bookings
+
+API Communication:
+The frontend uses fetch() to send form data to PHP endpoints. There is no formal REST framework in the project.
+
+Authentication:
+The login flow uses PHP session_start() and stores values in $_SESSION. There is no role-based authorization system in the code.
+
+Major Modules:
+- home/landing page
+- room showcase
+- food ordering
+- user registration
+- login system
+- payment submission
+- review submission
+- database setup scripts
+
+Important Features:
+- stylish responsive layout
+- animations and user interaction
+- validation for login and registration
+- password hashing for users
+- session-based login state
+- order calculation logic
+- card-last4 storage for security
+
+1.2 Scope
+
+Functional Scope:
+Current implementation supports:
+- browsing the site
+- viewing rooms and services
+- user registration
+- user login
+- placing food orders
+- payment form submission
+- review submission
+- saving records to MySQL
+
+Technical Scope:
+- static website
+- PHP procedural backend
+- MySQL database
+- no modern framework
+- no MVC structure found
+
+User Scope:
+- general public website visitors
+- registered users
+- no admin role implemented
+
+Data-management Scope:
+- users
+- orders
+- payments
+- reviews
+- booking table definitions exist, but booking workflow is not fully implemented
+
+Authentication Scope:
+- sign-up
+- login
+- password hashing
+- session persistence
+- no password reset, admin role, or permission model
+
+Administrative Scope:
+Not directly verifiable from source code. No admin dashboard or management panel is present.
+
+Frontend Scope:
+- marketing pages
+- forms
+- room cards
+- food cards
+- review section
+- responsive navigation
+
+Backend Scope:
+- validation
+- database insert logic
+- JSON responses
+- session management
+
+Database Scope:
+- user account data
+- orders
+- payment records
+- reviews
+- booking data definition
+
+Reporting Scope:
+No dashboard, charting, analytics, or admin reporting module is implemented.
+
+Scalability:
+The project is designed for a small local hospitality website, not a production-scale multi-user system.
+
+Possible Expansion:
+- admin panel
+- real booking system
+- order tracking
+- notifications
+- real payment gateway
+- analytics
+- deployment to cloud hosting
+
+1.3 Objectives
+
+1. To create a professional hotel and dining website.
+2. To provide a visually structured landing page for hotel services.
+3. To allow users to view room categories and associated information.
+4. To support user account creation through a sign-up form.
+5. To allow returning users to log in securely.
+6. To protect stored passwords using hashing.
+7. To allow customers to place food orders digitally.
+8. To provide a payment form for checkout and billing data collection.
+9. To reduce manual tracking of orders and payments.
+10. To capture guest testimonials and ratings.
+11. To persist operational data in MySQL.
+12. To provide a simple browser-to-PHP database workflow using fetch().
+13. To improve customer engagement and digital presentation.
+14. To create a project that can run on a local XAMPP environment.
+
+
+2. SYSTEM ANALYSIS AND SPECIFICATION
+
+2.1 Existing System
+
+The project targets a typical hospitality workflow that originally depends on manual processes such as direct contact, paper records, and informal customer handling. This system introduces digital forms to replace or supplement those manual steps.
+
+Existing workflow:
+- users browse rooms and services through website pages
+- customers request room info or place orders through forms
+- authentication is required before login completes
+- order and payment data are collected via forms
+- reviews are stored centrally in a database
+
+Manual processes:
+- phone-based orders
+- handwritten customer records
+- manual payment notes
+- guest feedback collected without centralized storage
+
+Data handling:
+- user registration stores name, email, phone, password
+- orders store name, phone, address, food item, quantity, total price
+- payments store personal billing data and last 4 digits only
+- reviews store guest name, email, rating, and review text
+
+Problems addressed:
+- fragmented customer data
+- slow order processing
+- inconsistent customer record storage
+- lack of digital review capture
+- poor presentation of hotel services
+
+Inefficiencies:
+- manual management of rooms and orders
+- delayed customer response
+- absence of structured records
+
+Security issues:
+- manual data handling can lead to loss or misuse
+- this project addresses some vulnerabilities through password hashing and card masking
+
+Accessibility issues:
+- no explicit accessibility framework is implemented; accessible design is limited to general semantic HTML and CSS.
+
+Reporting problems:
+- no formal report/dashboard module exists.
+
+2.2 Limitations of Existing System
+
+Limitation 1: No admin panel
+Problem: There is no central place to manage records.
+Cause: Project uses static frontend with basic PHP scripts, not a full management stack.
+Impact: Business owners cannot easily manage orders, payments, and reviews.
+
+Limitation 2: Booking workflow incomplete
+Problem: A bookings table exists, but no frontend form is actively used to create room bookings.
+Cause: Schema was created, but UI logic is not implemented.
+Impact: Room booking capability is partially planned but not operational.
+
+Limitation 3: Payment is simulated
+Problem: Payment is not connected to real payment gateway integration.
+Cause: No external payment library or provider integration is present.
+Impact: It is not a live financial transaction system.
+
+Limitation 4: No role-based authorization
+Problem: There is no distinction between admin and regular user.
+Cause: Session logic stores only basic user data.
+Impact: User permissions and access control are not enforceable.
+
+Limitation 5: Search bars are non-functional
+Problem: Search inputs exist visually but do not trigger a real search backend.
+Cause: Forms have no backend handler.
+Impact: Search is cosmetic only.
+
+Limitation 6: No route protection
+Problem: Pages do not check whether a user is logged in before access.
+Cause: No protected-route logic is implemented.
+Impact: User authentication cannot be enforced across the site.
+
+Limitation 7: Local-only deployment
+Problem: No production deployment or environment configuration exists.
+Cause: The system expects a local XAMPP setup.
+Impact: It is not production-ready for live deployment.
+
+2.3 Feasibility Study
+
+Technical Feasibility:
+This project is technically feasible because it uses common web stack components: HTML, CSS, JavaScript, PHP, and MySQL. XAMPP provides the local execution environment, and MySQLi in PHP supports database connectivity.
+
+Economic Feasibility:
+The project is cost-efficient because it uses free/open-source tools and no paid framework libraries. The main costs would be local hosting and maintenance if extended.
+
+Operational Feasibility:
+The website is easy to navigate and understand. Users can register, log in, and fill out forms without extensive training. However, no admin training module exists.
+
+Schedule Feasibility:
+This project fits a typical academic timeline because it uses a simple architecture with manageable modules and a limited number of forms and database tables.
+
+Security and Legal Feasibility:
+The application includes basic input validation, password hashing, and card-number masking. However, it lacks enterprise-level security mechanisms such as JWT, CSRF protection, route authorization, and live payment compliance.
+
+2.4 Need of New System
+
+The project is needed because manual handling of hotel and food service interactions is inefficient. The new system introduces digital convenience to:
+- automate registration
+- centralize data in a MySQL database
+- process orders more quickly
+- improve form validation and accuracy
+- improve site presentation and user experience
+- maintain user feedback records
+- reduce paper-based and manual processing
+- organize payment and order records centrally
+
+2.5 Front End & Back End Tools
+
+Technology: HTML5
+Purpose: page structure and content
+Where Used: all pages
+Important Libraries: none
+Version: not specified
+
+Technology: CSS3
+Purpose: page styling, responsiveness, animations
+Where Used: css folder
+Important Libraries: custom styles, Font Awesome icons
+Version: not specified
+
+Technology: JavaScript
+Purpose: validation, form submission, UI interactions
+Where Used: all HTML pages
+Important Libraries: native browser API
+Version: not specified
+
+Technology: PHP
+Purpose: backend processing, validation, database interaction, session creation
+Where Used: php folder
+Important Libraries: native PHP functions
+Version: not specified
+
+Technology: MySQL
+Purpose: persistent data storage
+Where Used: db scripts and schema
+Important Libraries: MySQL server
+Version: XAMPP-compatible
+
+Technology: MySQLi
+Purpose: connect to and query MySQL
+Where Used: php/db_connect.php and backend scripts
+Important Libraries: PHP MySQLi extension
+Version: server-provided
+
+Technology: XAMPP
+Purpose: local runtime environment for Apache + PHP + MySQL
+Where Used: local deployment
+Important Libraries: Apache, MySQL, PHP
+Version: not specified
+
+Technology: Font Awesome
+Purpose: icons
+Where Used: all pages
+Important Libraries: CDN stylesheet
+Version: 6.5.0 declared in HTML
+
+Technology: Fetch API
+Purpose: browser-to-server communication
+Where Used: login, registration, order, payment, review forms
+Important Libraries: native browser API
+Version: browser native
+
+Technology: Sessions
+Purpose: login persistence
+Where Used: php/login.php
+Important Libraries: PHP session API
+Version: native
+
+Technology: Password Hashing
+Purpose: protect stored passwords
+Where Used: php/register.php; verification in login.php
+Important Libraries: PHP password_hash / password_verify
+Version: native
+
+
+3. SYSTEM REQUIREMENT SPECIFICATION
+
+Hardware Requirements
+Minimum:
+- Processor: dual-core or equivalent
+- RAM: 4 GB
+- Storage: 10 GB
+- Display: standard monitor
+- Network: local network or browser access
+- Client device: desktop/laptop
+
+Recommended:
+- Processor: Intel i5 / Ryzen 5 or above
+- RAM: 8 GB
+- Storage: 20 GB
+- Display: full HD
+- Network: local XAMPP environment or broadband
+
+Software Requirements
+Operating System:
+- Windows 10/11 (current environment)
+- XAMPP-compatible environment
+
+Programming Languages:
+- HTML
+- CSS
+- JavaScript
+- PHP
+- SQL
+
+Runtime:
+- PHP runtime
+- MySQL server
+
+Database:
+- MySQL
+
+Browser:
+- modern browser such as Chrome, Edge, Firefox
+
+IDE / Editor:
+- VS Code (used in project workspace)
+
+Package Manager:
+No package manager manifest is present.
+
+Development Tools:
+- XAMPP
+- phpMyAdmin implied by setup scripts
+- browser dev tools
+
+Functional Requirements
+FR-01: User Registration
+Description: User can sign up with personal details.
+Actor: visitor/new user
+Input: name, email, phone, password, confirm password
+Processing: validate and insert into users
+Output: success or error JSON
+Validation: valid email, password >= 6, phone digits >= 10, names length >=2
+Dependencies: sign-up.html, register.php, db_connect.php
+
+FR-02: User Login
+Description: Registered user can log in.
+Actor: registered user
+Input: email, password
+Processing: validate and check database; create session
+Output: success or error JSON
+Validation: valid email, password length >=6
+Dependencies: login.html, login.php
+
+FR-03: Food Ordering
+Description: User can place an order for food.
+Actor: customer
+Input: full name, phone, address, food item, quantity
+Processing: validate order and compute total
+Output: success or error JSON with order details
+Validation: valid phone, not empty address, valid food item, quantity >=1
+Dependencies: order.html, order.php
+
+FR-04: Payment Submission
+Description: User fills payment details and submits checkout.
+Actor: customer
+Input: name, email, address, city, zip code, card details, amount
+Processing: validate fields and store last 4 digits
+Output: success or error JSON
+Validation: required fields, valid email, valid card format, amount >0
+Dependencies: payment.html, payment.php
+
+FR-05: Review Submission
+Description: User can submit rating and review text.
+Actor: visitor/customer
+Input: guest name, email, rating, review_text
+Processing: validate and insert review into reviews table
+Output: success or error JSON
+Validation: rating 1-5, review length >=10
+Dependencies: review.html, review.php
+
+FR-06: Website Browsing
+Description: User can navigate between pages.
+Actor: visitor
+Input: navigation clicks
+Processing: page load through direct HTML links
+Output: page content displayed
+Dependencies: all pages
+
+FR-07: Database Setup
+Description: Developer can create database and tables via setup scripts.
+Actor: developer/system administrator
+Input: MySQL credentials and local server access
+Processing: create database and tables
+Output: success/failure HTML message
+Dependencies: php/database/*.php
+
+FR-08: Session Persistence
+Description: After login, session stores user details.
+Actor: logged-in user
+Input: login result
+Processing: set $_SESSION values
+Output: session variables for authenticated user
+Dependencies: login.php
+
+Non-Functional Requirements
+Performance:
+The site loads quickly because it is a static website with lightweight backend interaction.
+
+Security:
+- hashed passwords
+- last 4-digit card storage
+- server-side validation
+- sanitized input using real_escape_string
+
+Reliability:
+Database and backend scripts include basic error handling.
+
+Availability:
+The system is designed for local deployment on XAMPP; production availability is not implemented.
+
+Usability:
+Simple navigation and clear forms enhance usability.
+
+Maintainability:
+The code is straightforward and modular enough for a small project.
+
+Scalability:
+Limited; not built for large-scale commercial use.
+
+Compatibility:
+Works in modern browsers and local XAMPP environment.
+
+Responsiveness:
+CSS media rules and flexible layout provide responsiveness, though not a comprehensive adaptive framework.
+
+3.1 Proposed System and Advantages
+
+The proposed system is a lightweight digital hospitality platform built with HTML, CSS, JavaScript, PHP, and MySQL. It includes a front-end experience for visitors and a backend to persist key transactions.
+
+Overall architecture:
+- browser renders pages
+- JavaScript performs validations
+- fetch() sends form data to PHP endpoint
+- PHP validates and inserts into MySQL
+- JSON response updates the UI
+
+Frontend:
+- landing page
+- room pages
+- order and payment forms
+- review page
+- sign-up/login forms
+
+Backend:
+- login verification
+- registration processing
+- order insertion
+- payment insertion
+- review insertion
+
+Database:
+- users, orders, payments, reviews, bookings
+
+APIs:
+- PHP scripts act as form-processing endpoints, not formal REST API endpoints.
+
+Authentication:
+- simple session-based login flow
+
+Data flow:
+User -> browser -> PHP form processor -> MySQL -> JSON result -> browser
+
+User interaction:
+- click navigation
+- fill forms
+- receive success/error messages
+- redirect to pages after processing
+
+Main modules:
+- home and marketing pages
+- room gallery
+- order system
+- payment flow
+- review system
+
+Advantages:
+- reduces manual record handling
+- improves digital presentation
+- centralizes data storage
+- validates input on both sides
+- stores hashed password records
+- collects guest feedback systematically
+
+3.2 Development Strategy Model
+
+The implementation suggests a prototype/iterative development style. No formal agile documentation is present, so this should be represented academically as an iterative model with waterfall-like phases.
+
+Requirement Analysis:
+Derived from forms, pages, and database schema.
+
+Planning:
+UI pages were designed and expected flows were mapped.
+
+Design:
+CSS layout and database schema were designed.
+
+Development:
+Static pages were built first, then PHP forms, and then database integration.
+
+Testing:
+Manual browser and DB validation were used.
+
+Deployment:
+Local XAMPP deployment is the target environment.
+
+Maintenance:
+Manual updating of scripts and database schema is expected.
+
+
+4. SYSTEM DESIGN
+
+4.1 Data Flow Diagram
+
+Context Level / Level 0:
+External entities:
+- Visitor
+- Registered User
+- MySQL Database
+
+System:
+- Luxe Hotel & Dine website
+
+Inputs:
+- registration data
+- login data
+- order details
+- payment details
+- review details
+
+Outputs:
+- JSON responses
+- success messages
+- redirects
+- stored data records
+
+Level 1 major processes:
+- Registration Process
+- Login Process
+- Order Process
+- Payment Process
+- Review Process
+- Database Setup
+
+Data stores:
+- users
+- orders
+- payments
+- reviews
+- bookings
+
+Mermaid DFD (Level 0):
+```mermaid
+flowchart LR
+    A[Visitor / User] -->|Registration / Login / Order / Review / Payment| B[Luxe Hotel & Dine System]
+    B -->|JSON Response| A
+    B -->|Insert / Query| C[(MySQL Database)]
+    C -->|Data / Result| B
+```
+
+Mermaid DFD (Level 1):
+```mermaid
+flowchart TD
+    U[User] --> P1[Registration Process]
+    U --> P2[Login Process]
+    U --> P3[Order Process]
+    U --> P4[Payment Process]
+    U --> P5[Review Process]
+    P1 --> D[(users)]
+    P2 --> D
+    P3 --> O[(orders)]
+    P4 --> P[(payments)]
+    P5 --> R[(reviews)]
+    P1 --> M[JSON Success/Error Response]
+    P2 --> M
+    P3 --> M
+    P4 --> M
+    P5 --> M
+    M --> U
+```
+
+4.2 E-R Diagram
+
+Entities:
+- users
+- orders
+- payments
+- reviews
+- bookings
+
+Attributes:
+- as documented in the database schema below
+
+Relationships:
+- conceptual many-to-one link from user to orders, payments, reviews, bookings
+- not enforced by foreign key constraints in source code
+
+Mermaid ER:
+```mermaid
+erDiagram
+    USERS {
+        int id PK
+        varchar full_name
+        varchar email
+        varchar phone
+        varchar password
+        timestamp created_at
+    }
+
+    ORDERS {
+        int id PK
+        varchar user_name
+        varchar phone
+        varchar address
+        varchar food_item
+        int quantity
+        decimal total_price
+        enum status
+        timestamp ordered_at
+    }
+
+    PAYMENTS {
+        int id PK
+        varchar full_name
+        varchar email
+        varchar address
+        varchar city
+        varchar zip_code
+        varchar card_name
+        char card_last4
+        decimal amount
+        enum status
+        timestamp paid_at
+    }
+
+    REVIEWS {
+        int id PK
+        varchar guest_name
+        varchar email
+        int rating
+        text review_text
+        timestamp created_at
+    }
+
+    BOOKINGS {
+        int id PK
+        varchar user_name
+        varchar email
+        varchar phone
+        varchar room_type
+        date check_in
+        date check_out
+        int guests
+        decimal total_price
+        enum status
+        timestamp booked_at
+    }
+
+    USERS ||--o{ ORDERS : places
+    USERS ||--o{ PAYMENTS : makes
+    USERS ||--o{ REVIEWS : writes
+    USERS ||--o{ BOOKINGS : books
+```
+
+4.3 Class Diagram
+
+The project is not built with formal OOP classes. The nearest equivalent is a set of procedural modules.
+
+Modules identified:
+- DbConnect
+- RegisterController
+- LoginController
+- OrderController
+- PaymentController
+- ReviewController
+- FrontendForm
+
+Mermaid UML class diagram:
+```mermaid
+classDiagram
+    class DbConnect {
+        +connect()
+        +setCharset()
+    }
+
+    class RegisterController {
+        +sanitizeInput()
+        +validateUser()
+        +checkExistingEmail()
+        +hashPassword()
+        +insertUser()
+    }
+
+    class LoginController {
+        +sanitizeInput()
+        +validateCredentials()
+        +fetchUser()
+        +verifyPassword()
+        +startSession()
+    }
+
+    class OrderController {
+        +calculatePrice()
+        +validateOrder()
+        +insertOrder()
+    }
+
+    class PaymentController {
+        +validatePayment()
+        +maskCardNumber()
+        +insertPayment()
+    }
+
+    class ReviewController {
+        +validateReview()
+        +insertReview()
+    }
+
+    class FrontendForm {
+        +validateClientSide()
+        +submitFetch()
+    }
+
+    DbConnect <|-- RegisterController
+    DbConnect <|-- LoginController
+    DbConnect <|-- OrderController
+    DbConnect <|-- PaymentController
+    DbConnect <|-- ReviewController
+
+    FrontendForm --> RegisterController
+    FrontendForm --> LoginController
+    FrontendForm --> OrderController
+    FrontendForm --> PaymentController
+    FrontendForm --> ReviewController
+```
+
+4.4 Use Case Diagram
+
+Actors:
+- Visitor
+- Registered User
+- System Administrator (not implemented)
+- MySQL Database
+
+Use cases:
+- Browse home page
+- View rooms and services
+- Register
+- Login
+- Place order
+- Submit payment
+- Submit review
+
+Mermaid use-case diagram:
+```mermaid
+flowchart LR
+    actorV[Visitor]
+    actorU[Registered User]
+    actorA[System Admin]:::notimplemented
+    actorDB[MySQL Database]
+
+    subgraph System[Luxe Hotel & Dine]
+        UC1[Browse Homepage]
+        UC2[View Rooms]
+        UC3[View Food Menu]
+        UC4[Register]
+        UC5[Login]
+        UC6[Place Order]
+        UC7[Make Payment]
+        UC8[Submit Review]
+    end
+
+    actorV --> UC1
+    actorV --> UC2
+    actorV --> UC3
+    actorV --> UC4
+    actorU --> UC5
+    actorU --> UC6
+    actorU --> UC7
+    actorU --> UC8
+    UC4 --> actorDB
+    UC5 --> actorDB
+    UC6 --> actorDB
+    UC7 --> actorDB
+    UC8 --> actorDB
+```
+
+4.5 Sequence Diagram
+
+Registration Sequence:
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as sign-up.html
+    participant P as register.php
+    participant D as MySQL users
+    U->>F: Fill form
+    F->>F: Validate fields
+    F->>P: POST data
+    P->>P: sanitize + validate
+    P->>D: SELECT email
+    D-->>P: result
+    alt email exists
+        P-->>F: JSON error
+    else email free
+        P->>P: password_hash()
+        P->>D: INSERT
+        D-->>P: success
+        P-->>F: JSON success
+    end
+    F-->>U: Show success screen / redirect
+```
+
+Login Sequence:
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as login.html
+    participant P as login.php
+    participant D as MySQL users
+    U->>F: Enter email + password
+    F->>P: POST credentials
+    P->>P: validate input
+    P->>D: SELECT user by email
+    D-->>P: user row
+    alt password valid
+        P->>P: session_start()
+        P-->>F: JSON success
+    else invalid
+        P-->>F: JSON error
+    end
+    F-->>U: Redirect to index.html
+```
+
+Order Sequence:
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as order.html
+    participant P as order.php
+    participant D as MySQL orders
+    U->>F: Fill order form
+    F->>P: POST order data
+    P->>P: validate + calculate total
+    P->>D: INSERT into orders
+    D-->>P: inserted order id
+    P-->>F: JSON success
+    F-->>U: Redirect to payment.html
+```
+
+Payment Sequence:
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as payment.html
+    participant P as payment.php
+    participant D as MySQL payments
+    U->>F: Fill billing + card info
+    F->>P: POST form data
+    P->>P: validate + get last 4 digits
+    P->>D: INSERT into payments
+    D-->>P: result
+    P-->>F: JSON success
+    F-->>U: Redirect home
+```
+
+Review Sequence:
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as review.html
+    participant P as review.php
+    participant D as MySQL reviews
+    U->>F: Fill review form
+    F->>P: POST review data
+    P->>P: validate rating and length
+    P->>D: INSERT into reviews
+    D-->>P: save confirmation
+    P-->>F: JSON success/error
+    F-->>U: Show toast message
+```
+
+4.6 Activity Diagram
+
+Login activity:
+```mermaid
+flowchart TD
+    A[Start] --> B[Open login page]
+    B --> C[Enter email and password]
+    C --> D{Validation passed?}
+    D -- No --> E[Show error message]
+    E --> F[End]
+    D -- Yes --> G[Send POST to login.php]
+    G --> H{User exists?}
+    H -- No --> I[Show no account found]
+    I --> F
+    H -- Yes --> J{Password matches?}
+    J -- No --> K[Show incorrect password]
+    K --> F
+    J -- Yes --> L[Create session variables]
+    L --> M[Return success JSON]
+    M --> N[Redirect to index.html]
+    N --> F
+```
+
+Registration activity:
+```mermaid
+flowchart TD
+    A[Start] --> B[Open sign-up page]
+    B --> C[Fill form]
+    C --> D{Client-side validation okay?}
+    D -- No --> E[Highlight error fields]
+    E --> F[End]
+    D -- Yes --> G[Send POST to register.php]
+    G --> H{Email already exists?}
+    H -- Yes --> I[Show duplicate email error]
+    I --> F
+    H -- No --> J[Hash password]
+    J --> K[Insert into users table]
+    K --> L{Insert success?}
+    L -- No --> M[Show registration failed]
+    M --> F
+    L -- Yes --> N[Show success screen]
+    N --> O[Redirect to home]
+    O --> F
+```
+
+4.7 Data Dictionary
+
+Table: users
+Purpose: store sign-up/login data
+Relationships: none enforced; conceptual relation to orders/payments/reviews
+
+Field details:
+- id: INT, required, auto-increment, primary key
+- full_name: VARCHAR(100), required, min validation in forms and server
+- email: VARCHAR(150), required, unique, valid email check
+- phone: VARCHAR(20), required, min 10 digits
+- password: VARCHAR(255), required, password hashed
+- created_at: TIMESTAMP, required, default CURRENT_TIMESTAMP
+
+Table: orders
+Purpose: store food orders
+
+Field details:
+- id: INT, required, auto-increment, primary key
+- user_name: VARCHAR(100), required, min 2 chars
+- phone: VARCHAR(20), required, min 10 digits
+- address: VARCHAR(255), required
+- food_item: VARCHAR(100), required
+- quantity: INT, required, default 1, min 1
+- total_price: DECIMAL(10,2), required, default 0.00
+- status: ENUM('pending','confirmed','delivered','cancelled'), required, default pending
+- ordered_at: TIMESTAMP, required, default CURRENT_TIMESTAMP
+
+Table: payments
+Purpose: store payment records
+
+Field details:
+- id: INT, required, auto-increment, primary key
+- full_name: VARCHAR(100), required
+- email: VARCHAR(150), required, valid email
+- address: VARCHAR(255), required
+- city: VARCHAR(100), required
+- zip_code: VARCHAR(20), required
+- card_name: VARCHAR(100), required
+- card_last4: CHAR(4), required, stores final 4 digits only
+- amount: DECIMAL(10,2), required, default 2290.00
+- status: ENUM('pending','success','failed'), required, default pending
+- paid_at: TIMESTAMP, required, default CURRENT_TIMESTAMP
+
+Table: reviews
+Purpose: store guest review feedback
+
+Field details:
+- id: INT, required, auto-increment, primary key
+- guest_name: VARCHAR(100), required, min 2 chars
+- email: VARCHAR(150), required, valid email
+- rating: TINYINT, required, default 5, allowed 1-5
+- review_text: TEXT, required, min 10 chars
+- created_at: TIMESTAMP, required, default CURRENT_TIMESTAMP
+
+Table: bookings
+Purpose: room booking table schema exists for future use
+
+Field details:
+- id: INT, required, auto-increment, primary key
+- user_name: VARCHAR(100), required
+- email: VARCHAR(150), required
+- phone: VARCHAR(20), required
+- room_type: VARCHAR(100), required
+- check_in: DATE, required
+- check_out: DATE, required
+- guests: INT, required, default 1
+- total_price: DECIMAL(10,2), required, default 0.00
+- status: ENUM('pending','confirmed','cancelled'), required, default pending
+- booked_at: TIMESTAMP, required, default CURRENT_TIMESTAMP
+
+
+5. SCREEN DESIGN
+
+Screen Inventory:
+- Home: index.html
+- About: about.html
+- Our Rooms: room.html
+- Room detail pages: room-1.html to room-8.html
+- Gallery: galary.html
+- Reviews: review.html
+- Order: order.html
+- Payment: payment.html
+- Login: login.html
+- Sign Up: sign-up.html
+- Popular Hotels: popular.html
+- Our Food: our_food.html
+- Burger: burger.html
+- Team: team.html
+
+Home Page:
+Route: index.html
+Purpose: present hotel brand and services
+Main elements: navbar, hero section, booking bar, services, rooms preview, food cards, stats
+
+About Page:
+Purpose: company story and hospitality branding
+
+Our Rooms Page:
+Purpose: list room and suite offerings
+
+Room Detail Pages:
+Purpose: explain individual room properties and amenities
+
+Reviews Page:
+Purpose: display guest reviews and submit new review
+
+Order Page:
+Purpose: collect food order information
+
+Payment Page:
+Purpose: collect billing and card details
+
+Login Page:
+Purpose: user sign in
+
+Sign-up Page:
+Purpose: create new user account
+
+5.1 Input Design
+
+Registration form inputs:
+- full_name: text, required, min 2
+- email: email, required, valid email
+- phone: tel, required, min 10 digits
+- password: password, required, min 6
+- confirm_password: password, required, must match
+
+Login form inputs:
+- email: email, required, valid email
+- password: password, required, min 6
+
+Order form inputs:
+- name: text, required
+- phone: tel, required
+- address: text, required
+- food_select: select, required
+- quantity: number, required, min 1
+
+Payment form inputs:
+- full_name: text, required
+- email: email, required
+- address: text, required
+- city: text, required
+- zip_code: text, required
+- card_name: text, required
+- card_number: text, required, digits only at backend
+- expiry: text, required
+- cvv: text, required
+
+Review form inputs:
+- guest_name: text, required, min 2
+- email: email, required, valid email
+- rating: select, required, 1-5
+- review_text: textarea, required, min 10 chars
+
+5.2 Output Design / Report Design
+
+Output types in the project:
+- alerts for form errors
+- success messages
+- toast notifications
+- redirected pages
+- database records
+- JSON responses from PHP scripts
+
+Examples:
+- Login failed: Incorrect password.
+- Payment Successful! Redirecting...
+- Review submitted successfully.
+- Account created successfully.
+
+No formal report or dashboard is generated in the frontend.
+
+
+6. CODING — FEW CODE SNIPPETS
+
+Snippet 1: Database connection
+File: php/db_connect.php
+Purpose: establish connection and character set
+Code:
+```php
+define('DB_HOST', 'localhost');
+define('DB_USER', '[REDACTED]');
+define('DB_PASS', '[REDACTED]');
+define('DB_NAME', 'food_website');
+
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+if ($conn->connect_error) {
+    die(json_encode([
+        'status'  => 'error',
+        'message' => 'Database connection failed: ' . $conn->connect_error
+    ]));
+}
+
+$conn->set_charset('utf8mb4');
+```
+Explanation: This file is the central DB config used across backend scripts.
+
+Snippet 2: Registration logic
+File: php/register.php
+Purpose: validate and insert user
+Code:
+```php
+$full_name = trim($conn->real_escape_string($_POST['full_name'] ?? ''));
+$email     = trim($conn->real_escape_string($_POST['email']     ?? ''));
+$phone     = trim($conn->real_escape_string($_POST['phone']     ?? ''));
+$password  = $_POST['password'] ?? '';
+$confirm   = $_POST['confirm_password'] ?? '';
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'Please enter a valid email address.';
+}
+
+if (strlen($password) < 6) {
+    $errors[] = 'Password must be at least 6 characters.';
+}
+
+$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+```
+Explanation: The script sanitizes inputs, validates them, hashes the password, and inserts into the users table.
+
+Snippet 3: Login logic
+File: php/login.php
+Purpose: validate credentials and create session
+Code:
+```php
+session_start();
+
+$stmt = $conn->prepare("SELECT id, full_name, email, password FROM users WHERE email = ?");
+$stmt->bind_param('s', $email);
+$result = $stmt->get_result();
+
+if (!password_verify($password, $user['password'])) {
+    echo json_encode(['status' => 'error', 'message' => 'Incorrect password. Please try again.']);
+    exit;
+}
+
+$_SESSION['user_id']   = $user['id'];
+$_SESSION['user_name'] = $user['full_name'];
+$_SESSION['user_email']= $user['email'];
+```
+Explanation: Successful login stores user data in the session for future authentication purposes.
+
+Snippet 4: Order pricing
+File: php/order.php
+Purpose: calculate order cost based on selected food item
+Code:
+```php
+$food_prices = [
+    'pizza'    => 350,
+    'pasta'    => 280,
+    'sandwich' => 200,
+    'cake'     => 450,
+    'burger'   => 250,
+    'juice'    => 150,
+];
+
+$unit_price  = $food_prices[$food_item];
+$total_price = $unit_price * $quantity;
+```
+Explanation: The pricing logic uses a manual associative list and multiplies by quantity.
+
+Snippet 5: Payment security
+File: php/payment.php
+Purpose: avoid storing the full card number
+Code:
+```php
+$card_num   = preg_replace('/\D/', '', $_POST['card_number'] ?? '');
+$card_last4 = substr($card_num, -4);
+
+$stmt = $conn->prepare(
+    "INSERT INTO payments (full_name, email, address, city, zip_code, card_name, card_last4, amount, status)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'success')"
+);
+```
+Explanation: Only the last four digits are stored, not the full card number.
+
+Snippet 6: Review validation
+File: php/review.php
+Purpose: enforce rating and text constraints
+Code:
+```php
+$rating      = (int)($_POST['rating']      ?? 5);
+$review_text = trim($conn->real_escape_string($_POST['review_text'] ?? ''));
+
+if ($rating < 1 || $rating > 5) {
+    $errors[] = 'Rating must be between 1 and 5.';
+}
+
+if (strlen($review_text) < 10) {
+    $errors[] = 'Review must be at least 10 characters.';
+}
+```
+Explanation: Review quality rules are enforced before insertion.
+
+Snippet 7: Registration fetch flow
+File: sign-up.html
+Purpose: send data to PHP endpoint
+Code:
+```javascript
+const formData = new FormData();
+formData.append('full_name', name.value.trim());
+formData.append('email', email.value.trim());
+formData.append('phone', phone.value.trim());
+formData.append('password', pwd.value);
+formData.append('confirm_password', confirm.value);
+
+fetch('php/register.php', {
+  method: 'POST',
+  body: formData
+})
+```
+Explanation: Client-side validation occurs first, then data is sent via AJAX to the backend.
+
+Snippet 8: Login fetch flow
+File: login.html
+Purpose: authenticate user and redirect on success
+Code:
+```javascript
+fetch('php/login.php', {
+  method: 'POST',
+  body: formData
+})
+.then(res => res.json())
+.then(data => {
+  if (data.status === 'success') {
+    localStorage.setItem('luxe_user', data.user.name);
+    localStorage.setItem('luxe_email', data.user.email);
+    window.location.href = 'index.html';
+  }
+});
+```
+Explanation: Successful login stores user details in localStorage and redirects to home.
+
+Snippet 9: Order flow
+File: order.html
+Purpose: place food order and redirect to payment page
+Code:
+```javascript
+fetch('php/order.php', {
+  method: 'POST',
+  body: formData
+})
+.then(res => res.json())
+.then(data => {
+  if (data.status === 'success') {
+    localStorage.setItem('luxe_order_total', data.total_price);
+    window.location.href = 'payment.html';
+  }
+});
+```
+Explanation: The order page stores the order total in localStorage for use in payment.html.
+
+Snippet 10: Payment flow
+File: payment.html
+Purpose: send billing and card data to backend
+Code:
+```javascript
+const orderTotal = parseFloat(localStorage.getItem('luxe_order_total')) || 2290.00;
+
+const formData = new FormData();
+formData.append('full_name', document.getElementById('pName').value.trim());
+formData.append('email', document.getElementById('pEmail').value.trim());
+formData.append('amount', orderTotal);
+
+fetch('php/payment.php', {
+  method: 'POST',
+  body: formData
+})
+```
+Explanation: The amount is pulled dynamically from localStorage, then sent to the payment backend.
+
+
+7. TESTING
+
+7.1 Manual Testing
+
+Test environment:
+- modern browser with local XAMPP environment
+- MySQL with database created through scripts
+- local application loading through browser
+
+Browser testing:
+- navigation across pages
+- form validation UI behavior
+- redirect after success
+- layout responsiveness
+
+Functional testing:
+- sign-up
+- login
+- order
+- payment
+- review
+
+Authentication testing:
+- valid login
+- invalid password
+- duplicate user registration
+
+Form validation testing:
+- empty fields
+- invalid email
+- short password
+- invalid phone
+- mismatch password
+- short review text
+
+CRUD testing:
+- create: registration/order/review/payment
+- read: database inspection through MySQL/phpMyAdmin
+- update: not implemented
+- delete: not implemented
+
+API testing:
+- ensure fetch requests return JSON responses
+- test invalid request handling
+
+Database testing:
+- database creation and table creation
+- insert success and error cases
+- verify stored data in MySQL
+
+Error handling:
+- invalid request method
+- database connection failure
+- validation failure
+- duplicate email
+
+Authorization:
+Not implemented as a real authorization mechanism.
+
+Responsive testing:
+- mobile and tablet view check
+
+7.2 Test Cases
+
+TC-01: Registration valid case
+Module: Registration
+Scenario: Valid registration
+Test Data: full name, valid email, valid phone, password and confirm match
+Preconditions: database running
+Expected Result: account created successfully
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-02: Registration invalid email
+Module: Registration
+Scenario: invalid email address
+Test Data: user@example
+Preconditions: form open
+Expected Result: validation error shown
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-03: Registration short password
+Module: Registration
+Scenario: password shorter than 6 chars
+Test Data: abcde
+Preconditions: form open
+Expected Result: password validation error
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-04: Registration mismatch password
+Module: Registration
+Scenario: confirm password does not match
+Test Data: password mismatch
+Expected Result: mismatch validation error
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-05: Login valid case
+Module: Login
+Scenario: registered user logs in
+Test Data: valid email and password
+Preconditions: account exists
+Expected Result: redirect to home page
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-06: Login invalid password
+Module: Login
+Scenario: wrong password
+Test Data: valid email and wrong password
+Expected Result: error message shown
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-07: Order valid case
+Module: Order
+Scenario: place a valid food order
+Test Data: valid customer info and selected item
+Expected Result: order saved and redirect to payment
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-08: Order empty fields
+Module: Order
+Scenario: required data missing
+Expected Result: validation error shown
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-09: Payment valid case
+Module: Payment
+Scenario: submit valid billing and card details
+Expected Result: payment recorded and redirect to home
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-10: Payment missing fields
+Module: Payment
+Scenario: required payment fields blank
+Expected Result: errors shown
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-11: Review valid case
+Module: Review
+Scenario: submit valid review
+Expected Result: success toast and record inserted
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-12: Review short text
+Module: Review
+Scenario: review shorter than 10 chars
+Expected Result: validation error
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-13: Database setup
+Module: Database
+Scenario: run setup_all_tables.php
+Expected Result: database and tables created successfully
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-14: API invalid method
+Module: PHP endpoints
+Scenario: call endpoint with GET instead of POST
+Expected Result: error JSON message
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+TC-15: Responsive interface
+Module: UI
+Scenario: access on mobile width
+Expected Result: form and layout remain usable
+Actual Result: To be verified during manual testing
+Status: Not executed
+
+
+8. ENHANCEMENTS
+
+8.1 Advantages of Your Project
+
+- It provides an attractive digital representation of a hospitality brand.
+- It unifies information, ordering, and feedback in one website.
+- It stores important records in a MySQL database.
+- It reduces dependence on manual processes.
+- It introduces validation and server-side processing.
+- It demonstrates real PHP and MySQL interaction for academic learning.
+- It is easy to run locally in a standard XAMPP environment.
+- It demonstrates a modern front-end flow using fetch() and data submission.
+
+8.2 Limitations of Your Project
+
+- No admin dashboard exists.
+- No real booking workflow is implemented.
+- No real payment gateway is integrated.
+- No advanced authorization system exists.
+- No logout function is present.
+- No search backend exists.
+- No reporting or analytics modules exist.
+- No automated testing suite exists.
+- Local-only environment, not production-ready.
+- Database naming is inconsistent in some scripts.
+
+8.3 Future Scope
+
+Currently Implemented:
+- website browsing
+- rooms page
+- user registration and login
+- food ordering
+- payment form submission
+- reviews
+- database-backed records
+
+Proposed Future Enhancements:
+- admin panel
+- room booking workflow
+- real payment gateway integration
+- order tracking
+- notifications
+- analytics/dashboard
+- exportable reports
+- cloud hosting
+- security improvements
+- audit logs
+- mobile app extension
+- multilingual support
+
+
+9. REFERENCES
+
+Technology Name: HTML5
+Official Documentation: https://developer.mozilla.org/en-US/docs/Web/HTML
+Purpose: page structure and content
+
+Technology Name: CSS3
+Official Documentation: https://developer.mozilla.org/en-US/docs/Web/CSS
+Purpose: styling and layout
+
+Technology Name: JavaScript
+Official Documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+Purpose: validation and client-side interactions
+
+Technology Name: PHP
+Official Documentation: https://www.php.net/docs.php
+Purpose: backend logic and database interaction
+
+Technology Name: MySQL
+Official Documentation: https://dev.mysql.com/doc/
+Purpose: relational database management
+
+Technology Name: MySQLi
+Official Documentation: https://www.php.net/manual/en/book.mysqli.php
+Purpose: PHP database connectivity and queries
+
+Technology Name: XAMPP
+Official Documentation: https://www.apachefriends.org/index.html
+Purpose: local web server and database environment
+
+Technology Name: Font Awesome
+Official Documentation: https://fontawesome.com/docs
+Purpose: icons and interface design
+
+
+# PROJECT FACT SHEET FOR CLAUDE
+
+Project Identity
+- Project name: Luxe Hotel & Dine
+- Project type: static hospitality and food-ordering website
+- Domain: hotel and dining service
+- Purpose: digital browsing, ordering, review collection, and payment entry
+- Target users: visitors, registered users, guests
+
+Architecture
+- Frontend: HTML/CSS/JavaScript
+- Backend: PHP
+- Database: MySQL
+- API architecture: fetch-based PHP endpoints
+- Authentication: session-based login
+- Hosting/deployment: local XAMPP
+
+Complete Modules
+- Home page
+- About page
+- Rooms page
+- Room detail pages
+- Food pages
+- Registration page
+- Login page
+- Order page
+- Payment page
+- Review page
+- Database setup scripts
+
+User Roles
+- Visitor
+- Registered User
+- Admin: not implemented
+
+Database
+- users
+- orders
+- payments
+- reviews
+- bookings
+
+API
+- POST /php/register.php
+- POST /php/login.php
+- POST /php/order.php
+- POST /php/payment.php
+- POST /php/review.php
+
+Frontend
+- Pages: all .html files
+- Components: cards, navbars, forms, hero sections, footer blocks
+- Routes: direct HTML page links
+- Services: JavaScript validation and animations
+- Forms: sign-up, login, order, payment, review
+- Major UI features: reveal animations, counters, search bars, responsive layout
+
+Backend
+- Routes: PHP scripts
+- Controllers: procedural backend modules
+- Models: MySQL tables
+- Middleware: no explicit middleware
+- Services: validation, DB insert operations, sessions
+- Utilities: db_connect.php and setup scripts
+
+Important Workflows
+- Browse site
+- Register account
+- Login
+- Place order
+- Submit payment
+- Submit review
+- Database storage and JSON response
+
+Security
+- password hashing
+- last-four-digit storage for cards
+- server-side validation
+- session-based login
+- Access-Control-Allow-Origin header included in backend scripts
+- no JWT or role-based auth
+
+Dependencies
+- PHP
+- MySQL
+- MySQLi
+- XAMPP
+- Font Awesome
+- native JavaScript browser API
+
+Project Folder Structure
+- d:\Food Website\
+  - about.html
+  - burger.html
+  - galary.html
+  - index.html
+  - login.html
+  - order.html
+  - payment.html
+  - review.html
+  - room.html
+  - sign-up.html
+  - css/
+  - image/
+  - php/
+  - php/database/
+  - five-hotel/
+
+Actual vs Future
+Implemented:
+- static website
+- registration/login
+- orders
+- payments
+- reviews
+- MySQL schema
+
+Not Implemented / Future:
+- admin dashboard
+- real payment gateway
+- booking workflow
+- authorization system
+- reports
+- logout logic
+- production deployment
+
+
+FINAL QUALITY CHECK
+- Project details are based on actual files and scripts in the workspace.
+- Where information is not directly verifiable, it is explicitly marked.
+- No sensitive credentials or secrets were reproduced.
+- No fake tests were reported.
+- No invented APIs or database fields were created.
+
+This text file is intended to serve as a detailed source document for another AI to turn into a full university project report.

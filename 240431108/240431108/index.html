@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxe Hotel & Dine</title>
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <section id="Home">
+    <nav>
+      <div class="logo">
+        <img src="image/logo.png" alt="Luxe Logo" />
+      </div>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li class="nav-link services">
+          <a href="#">Services <i class="fa-solid fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+          <ul class="drop-down">
+            <li><a href="popular.html"><i class="fa-solid fa-star" style="color:#fac031;margin-right:8px;"></i>Popular Hotels</a></li>
+            <li><a href="our_food.html"><i class="fa-solid fa-utensils" style="color:#fac031;margin-right:8px;"></i>Our Food</a></li>
+            <li><a href="burger.html"><i class="fa-solid fa-burger" style="color:#fac031;margin-right:8px;"></i>Burgers</a></li>
+            <li><a href="team.html"><i class="fa-solid fa-users" style="color:#fac031;margin-right:8px;"></i>Our Team</a></li>
+          </ul>
+        </li>
+
+        <li><a href="about.html">About</a></li>
+        <li><a href="room.html">Our Rooms</a></li>
+        <li><a href="galary.html">Gallery</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="order.html">Order</a></li>
+
+        <li>
+          <div class="search-bar">
+            <form action="">
+              <input type="text" name="search" placeholder="Search..." />
+              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+        </li>
+
+        <li>
+          <a href="login.html">
+            <img src="image/login-avatar.png" height="32" width="32" alt="Login" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <div class="header__image__container">
+      <div class="header__content">
+        <h1>Enjoy Your <span>Dream</span> Vacation</h1>
+        <p>Book Hotels, Rooms &amp; Fine Dining packages at the lowest price — comfort redefined.</p>
+        <div class="hero-btns">
+          <a href="room.html" class="btn-primary">Explore Rooms</a>
+          <a href="order.html" class="btn-outline">Order Food</a>
+        </div>
+      </div>
+
+      <!-- Booking bar -->
+      <div class="booking__container">
+        <form>
+          <div class="form__group">
+            <div class="input__group">
+              <input type="text" id="loc" placeholder=" " />
+              <label for="loc">Location</label>
+            </div>
+            <p>Where are you going?</p>
+          </div>
+          <div class="form__group">
+            <div class="input__group">
+              <input type="date" id="checkin" placeholder=" " />
+              <label for="checkin">Check In</label>
+            </div>
+            <p>Add date</p>
+          </div>
+          <div class="form__group">
+            <div class="input__group">
+              <input type="date" id="checkout" placeholder=" " />
+              <label for="checkout">Check Out</label>
+            </div>
+            <p>Add date</p>
+          </div>
+          <div class="form__group">
+            <div class="input__group">
+              <input type="number" id="guests" min="1" placeholder=" " />
+              <label for="guests">Guests</label>
+            </div>
+            <p>Add guests</p>
+          </div>
+        </form>
+        <button class="btn" type="button" onclick="window.location.href='room.html'">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services-section" style="padding-top: 120px;">
+    <div class="section-heading reveal">
+      <h2>What We <span>Offer</span></h2>
+      <p>World-class hospitality, fine dining, and unforgettable experiences — all under one roof.</p>
+      <div class="divider-line"><i class="fa-solid fa-star"></i></div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal stagger-1">
+        <img src="image/service1.png" alt="Room Service" />
+        <h3>Luxury Rooms</h3>
+        <p>Handpicked rooms with world-class amenities for a perfect stay.</p>
+      </div>
+      <div class="service-card reveal stagger-2">
+        <img src="image/service2.png" alt="Fine Dining" />
+        <h3>Fine Dining</h3>
+        <p>Exquisite cuisine crafted by award-winning chefs.</p>
+      </div>
+      <div class="service-card reveal stagger-3">
+        <img src="image/service3.png" alt="Spa" />
+        <h3>Spa & Wellness</h3>
+        <p>Relax and rejuvenate with our premium spa treatments.</p>
+      </div>
+      <div class="service-card reveal stagger-4">
+        <img src="image/service4.png" alt="Pool" />
+        <h3>Swimming Pool</h3>
+        <p>Crystal-clear pools open 24/7 for our guests.</p>
+      </div>
+      <div class="service-card reveal stagger-5">
+        <img src="image/service5.png" alt="Bar" />
+        <h3>Lounge & Bar</h3>
+        <p>Premium beverages and live music every evening.</p>
+      </div>
+      <div class="service-card reveal stagger-6">
+        <img src="image/service6.png" alt="Delivery" />
+        <h3>Fast Delivery</h3>
+        <p>Hot meals delivered to your room in under 30 minutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== POPULAR ROOMS PREVIEW ===== -->
+  <section class="section-pad" style="background: #fff;">
+    <div class="section-heading reveal">
+      <h2>Our <span>Rooms</span></h2>
+      <p>Choose from our collection of elegantly designed rooms and suites.</p>
+      <div class="divider-line"><i class="fa-solid fa-bed"></i></div>
+    </div>
+
+    <div class="rooms-preview">
+      <div class="room-preview-grid">
+        <div class="room-card reveal stagger-1">
+          <div class="room-img">
+            <img src="image/room-1.jpg" alt="Room 1" />
+            <div class="room-overlay">
+              <a href="room-1.html" class="room-view-btn">View Room</a>
+            </div>
+            <span class="room-badge">Popular</span>
+          </div>
+          <div class="room-info">
+            <h3>Deluxe Suite</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Ocean View, Floor 8</p>
+            <div class="room-meta">
+              <span><i class="fa-solid fa-user"></i> 2 Guests</span>
+              <span><i class="fa-solid fa-expand"></i> 45 m²</span>
+            </div>
+            <div class="room-price">
+              <strong>₹4,500</strong><span>/night</span>
+              <a href="order.html" class="btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card reveal stagger-2">
+          <div class="room-img">
+            <img src="image/room-2.jpg" alt="Room 2" />
+            <div class="room-overlay">
+              <a href="room-2.html" class="room-view-btn">View Room</a>
+            </div>
+            <span class="room-badge">New</span>
+          </div>
+          <div class="room-info">
+            <h3>Executive Suite</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Mountain View, Floor 12</p>
+            <div class="room-meta">
+              <span><i class="fa-solid fa-user"></i> 3 Guests</span>
+              <span><i class="fa-solid fa-expand"></i> 60 m²</span>
+            </div>
+            <div class="room-price">
+              <strong>₹7,200</strong><span>/night</span>
+              <a href="order.html" class="btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card reveal stagger-3">
+          <div class="room-img">
+            <img src="image/room-3.jpg" alt="Room 3" />
+            <div class="room-overlay">
+              <a href="room-3.html" class="room-view-btn">View Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <h3>Presidential Suite</h3>
+            <p><i class="fa-solid fa-location-dot"></i> Sky View, Floor 20</p>
+            <div class="room-meta">
+              <span><i class="fa-solid fa-user"></i> 4 Guests</span>
+              <span><i class="fa-solid fa-expand"></i> 120 m²</span>
+            </div>
+            <div class="room-price">
+              <strong>₹15,000</strong><span>/night</span>
+              <a href="order.html" class="btn-book">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: 40px;">
+        <a href="room.html" class="btn-primary">View All Rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOD PREVIEW ===== -->
+  <section class="section-pad" style="background: #f9f9f9;">
+    <div class="section-heading reveal">
+      <h2>Our <span>Signature</span> Dishes</h2>
+      <p>From classic comfort food to exotic world cuisines — we have it all.</p>
+      <div class="divider-line"><i class="fa-solid fa-bowl-food"></i></div>
+    </div>
+
+    <div class="food-grid">
+      <div class="food-card reveal stagger-1">
+        <div class="food-img"><img src="image/pizza.jpg" alt="Pizza" /></div>
+        <div class="food-info">
+          <h4>Wood Fire Pizza</h4>
+          <div class="food-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span>4.0</span>
+          </div>
+          <div class="food-bottom">
+            <strong>₹350</strong>
+            <a href="order.html" class="btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-card reveal stagger-2">
+        <div class="food-img"><img src="image/pasta.jpg" alt="Pasta" /></div>
+        <div class="food-info">
+          <h4>Creamy Pasta</h4>
+          <div class="food-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span>5.0</span>
+          </div>
+          <div class="food-bottom">
+            <strong>₹280</strong>
+            <a href="order.html" class="btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-card reveal stagger-3">
+        <div class="food-img"><img src="image/sandwich.jpg" alt="Sandwich" /></div>
+        <div class="food-info">
+          <h4>Club Sandwich</h4>
+          <div class="food-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span>4.2</span>
+          </div>
+          <div class="food-bottom">
+            <strong>₹200</strong>
+            <a href="order.html" class="btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-card reveal stagger-4">
+        <div class="food-img"><img src="image/cake.jpg" alt="Cake" /></div>
+        <div class="food-info">
+          <h4>Signature Cake</h4>
+          <div class="food-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span>4.8</span>
+          </div>
+          <div class="food-bottom">
+            <strong>₹450</strong>
+            <a href="order.html" class="btn-add"><i class="fa-solid fa-cart-plus"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="our_food.html" class="btn-primary">See Full Menu</a>
+    </div>
+  </section>
+
+  <!-- ===== STATS BANNER ===== -->
+  <section class="stats-banner reveal">
+    <div class="stat-item">
+      <h3 class="counter" data-target="850">0</h3>
+      <p>Happy Guests</p>
+    </div>
+    <div class="stat-item">
+      <h3 class="counter" data-target="120">0</h3>
+      <p>Rooms Available</p>
+    </div>
+    <div class="stat-item">
+      <h3 class="counter" data-target="15">0</h3>
+      <p>Years of Service</p>
+    </div>
+    <div class="stat-item">
+      <h3 class="counter" data-target="48">0</h3>
+      <p>Menu Items</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer_main">
+      <div class="footer_tag">
+        <h2>Locations</h2>
+        <p>Sri Lanka</p>
+        <p>USA</p>
+        <p>India</p>
+        <p>Japan</p>
+        <p>Italy</p>
+      </div>
+
+      <div class="footer_tag">
+        <h2>Quick Links</h2>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="our_food.html">Menu</a></p>
+        <p><a href="galary.html">Gallery</a></p>
+        <p><a href="order.html">Order</a></p>
+      </div>
+
+      <div class="footer_tag">
+        <h2>Contact</h2>
+        <p>
+          <img src="image/icons8-phone-48.png" alt="phone" />
+          +91 93275 99254
+        </p>
+        <p>
+          <img src="image/icons8-gmail-48.png" alt="email" />
+          <a href="mailto:rathodmilan216@gmail.com">rathodmilan216@gmail.com</a>
+        </p>
+        <p>
+          <img src="image/google-maps.png" alt="location" />
+          Mumbai, India
+        </p>
+      </div>
+
+      <div class="footer_tag">
+        <h2>Our Services</h2>
+        <p>Fast Delivery</p>
+        <p>Easy Payments</p>
+        <p>24 × 7 Support</p>
+        <p>Free Cancellation</p>
+      </div>
+
+      <div class="footer_tag">
+        <h2>Follow Us</h2>
+        <div class="footer-socials">
+          <i class="fa-brands fa-facebook-f" title="Facebook"></i>
+          <i class="fa-brands fa-twitter" title="Twitter"></i>
+          <i class="fa-brands fa-instagram" title="Instagram"></i>
+          <i class="fa-brands fa-linkedin-in" title="LinkedIn"></i>
+          <i class="fa-brands fa-youtube" title="YouTube"></i>
+        </div>
+      </div>
+    </div>
+
+    <p class="end">
+      Design by <span><i class="fa-solid fa-face-grin"></i> Form Kapdiya</span>
+    </p>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scrollTop" title="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script>
+    /* ---- Scroll reveal ---- */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ---- Scroll to top ---- */
+    const scrollBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('show', window.scrollY > 400);
+    });
+
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ---- Counter animation ---- */
+    const counters = document.querySelectorAll('.counter');
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el     = e.target;
+        const target = +el.dataset.target;
+        const step   = Math.ceil(target / 60);
+        let current  = 0;
+
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            el.textContent = target;
+            clearInterval(timer);
+          } else {
+            el.textContent = current;
+          }
+        }, 28);
+
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+  </script>
+
+</body>
+</html>

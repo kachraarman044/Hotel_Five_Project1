@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burger Menu — Luxe Hotel &amp; Dine</title>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/burger.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <section id="Home">
+    <nav>
+      <div class="logo"><img src="image/logo.png" alt="Luxe Logo" /></div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-link services">
+          <a href="#">Services <i class="fa-solid fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+          <ul class="drop-down">
+            <li><a href="popular.html"><i class="fa-solid fa-star" style="color:#fac031;margin-right:8px;"></i>Popular Hotels</a></li>
+            <li><a href="our_food.html"><i class="fa-solid fa-utensils" style="color:#fac031;margin-right:8px;"></i>Our Food</a></li>
+            <li><a href="burger.html" style="color:#fac031;"><i class="fa-solid fa-burger" style="color:#fac031;margin-right:8px;"></i>Burgers</a></li>
+            <li><a href="team.html"><i class="fa-solid fa-users" style="color:#fac031;margin-right:8px;"></i>Our Team</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="room.html">Our Rooms</a></li>
+        <li><a href="galary.html">Gallery</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li>
+          <div class="search-bar">
+            <form action=""><input type="text" name="search" placeholder="Search..." /><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></form>
+          </div>
+        </li>
+        <li><a href="login.html"><img src="image/login-avatar.png" height="32" width="32" alt="Login" /></a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <!-- ===== HERO ===== -->
+  <div class="burger-hero">
+    <img src="image/buger.jpg" alt="Burger Banner" />
+    <div class="burger-hero-content">
+      <h1>Our <span>Burgers</span></h1>
+      <p>Handcrafted burgers with premium ingredients</p>
+    </div>
+  </div>
+
+  <!-- ===== BURGER SECTION ===== -->
+  <section class="burger-section">
+    <div class="section-heading reveal">
+      <h2>Burger <span>Menu</span></h2>
+      <p>Gourmet burgers made fresh to order</p>
+      <div class="divider-line"><i class="fa-solid fa-burger"></i></div>
+    </div>
+
+    <div class="burger-grid">
+
+      <!-- Card 1 -->
+      <div class="burger-card reveal stagger-1">
+        <img src="image/buger.jpg" alt="Classic Burger" />
+        <div class="burger-card-body">
+          <h3>Classic Burger</h3>
+          <p>Juicy beef patty with fresh lettuce, tomato, pickles, and our special house sauce on a toasted brioche bun.</p>
+          <div class="burger-card-footer">
+            <span class="burger-price">₹250</span>
+            <a href="order.html" class="btn-order">
+              <i class="fa-solid fa-cart-plus"></i> Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="burger-card reveal stagger-2">
+        <img src="image/buger.jpg" alt="Double Cheese Burger" />
+        <div class="burger-card-body">
+          <h3>Double Cheese Burger</h3>
+          <p>Two flame-grilled beef patties loaded with melted cheddar, caramelised onions, and smoky BBQ sauce.</p>
+          <div class="burger-card-footer">
+            <span class="burger-price">₹350</span>
+            <a href="order.html" class="btn-order">
+              <i class="fa-solid fa-cart-plus"></i> Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="burger-card reveal stagger-3">
+        <img src="image/buger.jpg" alt="Veggie Burger" />
+        <div class="burger-card-body">
+          <h3>Veggie Burger</h3>
+          <p>Crispy chickpea & black-bean patty with avocado, fresh sprouts, and creamy herb mayo.</p>
+          <div class="burger-card-footer">
+            <span class="burger-price">₹200</span>
+            <a href="order.html" class="btn-order">
+              <i class="fa-solid fa-cart-plus"></i> Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="burger-card reveal stagger-4">
+        <img src="image/buger.jpg" alt="Spicy Burger" />
+        <div class="burger-card-body">
+          <h3>Spicy Fire Burger</h3>
+          <p>Jalapeño-marinated patty with ghost pepper mayo, pepper jack cheese, and crispy onion rings.</p>
+          <div class="burger-card-footer">
+            <span class="burger-price">₹300</span>
+            <a href="order.html" class="btn-order">
+              <i class="fa-solid fa-cart-plus"></i> Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="burger-card reveal stagger-5">
+        <img src="image/buger.jpg" alt="Chicken Burger" />
+        <div class="burger-card-body">
+          <h3>Crispy Chicken Burger</h3>
+          <p>Golden fried chicken fillet with coleslaw, pickled cucumber, and honey mustard glaze.</p>
+          <div class="burger-card-footer">
+            <span class="burger-price">₹280</span>
+            <a href="order.html" class="btn-order">
+              <i class="fa-solid fa-cart-plus"></i> Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="burger-card reveal stagger-6">
+        <img src="image/buger.jpg" alt="Mushroom Burger" />
+        <div class="burger-card-body">
+          <h3>Mushroom Swiss Burger</h3>
+          <p>Beef patty topped with sautéed portobello mushrooms, Swiss cheese, and truffle aioli.</p>
+          <div class="burger-card-footer">
+            <span class="burger-price">₹320</span>
+            <a href="order.html" class="btn-order">
+              <i class="fa-solid fa-cart-plus"></i> Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer_main">
+      <div class="footer_tag"><h2>Locations</h2><p>Sri Lanka</p><p>USA</p><p>India</p><p>Japan</p><p>Italy</p></div>
+      <div class="footer_tag">
+        <h2>Quick Links</h2>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="our_food.html">Menu</a></p>
+        <p><a href="galary.html">Gallery</a></p>
+        <p><a href="order.html">Order</a></p>
+      </div>
+      <div class="footer_tag">
+        <h2>Contact</h2>
+        <p><img src="image/icons8-phone-48.png" height="20" width="20" alt="phone" /> +91 93275 99254</p>
+        <p><a href="mailto:rathodmilan216@gmail.com"><img src="image/icons8-gmail-48.png" height="20" width="20" alt="email" /> rathodmilan216@gmail.com</a></p>
+        <p><img src="image/google-maps.png" height="20" width="20" alt="location" /> Mumbai, India</p>
+      </div>
+      <div class="footer_tag"><h2>Our Services</h2><p>Fast Delivery</p><p>Easy Payments</p><p>24 × 7 Support</p><p>Free Cancellation</p></div>
+      <div class="footer_tag">
+        <h2>Follow Us</h2>
+        <div class="footer-socials">
+          <i class="fa-brands fa-facebook-f" title="Facebook"></i>
+          <i class="fa-brands fa-twitter" title="Twitter"></i>
+          <i class="fa-brands fa-instagram" title="Instagram"></i>
+          <i class="fa-brands fa-linkedin-in" title="LinkedIn"></i>
+          <i class="fa-brands fa-youtube" title="YouTube"></i>
+        </div>
+      </div>
+    </div>
+    <p class="end">Design by <span><i class="fa-solid fa-face-grin"></i> Form Kapdiya</span></p>
+  </footer>
+
+  <button id="scrollTop" title="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 400); });
+    scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  </script>
+</body>
+</html>

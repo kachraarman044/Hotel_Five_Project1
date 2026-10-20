@@ -1,0 +1,174 @@
+/* ============================================
+   ORDER PAGE — Luxe Hotel & Dine
+   ============================================ */
+
+/* ===== ORDER SECTION ===== */
+.order-section {
+  padding: 60px 5% 80px;
+}
+
+/* ===== ORDER CONTAINER (2-col layout) ===== */
+.order-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== ORDER IMAGE ===== */
+.order-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.order-image.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.order-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===== ORDER FORM ===== */
+.order-form {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 34px;
+  box-shadow: 0 8px 36px rgba(0,0,0,0.09);
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+}
+
+.order-form.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* form groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 0 16px;
+  font-size: 14px;
+  color: #222;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #fac031;
+  box-shadow: 0 0 0 3px rgba(250,192,49,0.15);
+  background: #fff;
+}
+
+.form-group input::placeholder { color: #aaa; }
+
+/* ===== ORDER BUTTON ===== */
+.order-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, #fac031, #e0a820);
+  border: none;
+  border-radius: 12px;
+  color: #1a1a2e;
+  font-size: 15.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 6px 22px rgba(250,192,49,0.35);
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.22);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.order-btn:hover::before { width: 400px; height: 400px; }
+
+.order-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(250,192,49,0.5);
+}
+
+/* ===== SUCCESS TOAST ===== */
+.order-toast {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: #2ed573;
+  color: #1a1a2e;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  animation: slideInToast 0.4s ease;
+}
+
+.order-toast.show { display: flex; }
+
+@keyframes slideInToast {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .order-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .order-image { max-height: 280px; }
+  .order-image img { width: 100%; height: 280px; object-fit: cover; }
+}
+
+@media (max-width: 600px) {
+  .order-form { padding: 28px 22px; }
+  .order-section { padding: 40px 5% 60px; }
+}

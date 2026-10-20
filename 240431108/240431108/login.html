@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Luxe Hotel & Dine</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== BACKGROUND ===== -->
+  <div class="bg-wrapper">
+    <img src="css/header.jpg" alt="background" />
+  </div>
+
+  <!-- Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- ===== LOGIN CARD ===== -->
+  <div class="login-container">
+    <div class="login-card">
+
+      <!-- Brand -->
+      <div class="login-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-utensils"></i>
+        </div>
+        <h1>Welcome Back</h1>
+        <p>Sign in to your Luxe account</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="tab-btn active" onclick="window.location.href='login.html'">Login</button>
+        <button class="tab-btn" onclick="window.location.href='sign-up.html'">Sign Up</button>
+      </div>
+
+      <!-- Form -->
+      <form class="login-form" id="loginForm" novalidate>
+
+        <!-- Email -->
+        <div class="form-group" id="emailGroup">
+          <label for="email">Email Address</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input
+              type="email"
+              id="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+          </div>
+          <span class="error-msg">Please enter a valid email address.</span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group" id="passwordGroup">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            />
+            <button type="button" class="toggle-password" onclick="togglePwd(this)" aria-label="Toggle password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <span class="error-msg">Password must be at least 6 characters.</span>
+        </div>
+
+        <!-- Options -->
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="rememberMe" />
+            Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-login" id="loginBtn">
+          <span class="btn-text">Sign In</span>
+          <div class="spinner"></div>
+        </button>
+
+        <!-- Divider -->
+        <div class="divider"><span>or continue with</span></div>
+
+        <!-- Social -->
+        <div class="social-login">
+          <a href="#" class="social-btn google">
+            <i class="fa-brands fa-google"></i> Google
+          </a>
+          <a href="#" class="social-btn facebook">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+        </div>
+
+        <!-- Register link -->
+        <div class="register-link">
+          Don't have an account? <a href="sign-up.html">Create one free</a>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Back to home -->
+    <div class="back-home">
+      <a href="index.html">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </div>
+
+  <script>
+    /* ---- Particles ---- */
+    (function generateParticles() {
+      const container = document.getElementById('particles');
+      const count = 30;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.setProperty('--dur',   (6 + Math.random() * 10) + 's');
+        p.style.setProperty('--delay', (Math.random() * 10) + 's');
+        p.style.width  = (2 + Math.random() * 5) + 'px';
+        p.style.height = p.style.width;
+        container.appendChild(p);
+      }
+    })();
+
+    /* ---- Toggle password visibility ---- */
+    function togglePwd(btn) {
+      const input = btn.previousElementSibling;
+      const icon  = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    /* ---- Form validation + fake loading ---- */
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const email    = document.getElementById('email');
+      const password = document.getElementById('password');
+      const emailGrp = document.getElementById('emailGroup');
+      const pwdGrp   = document.getElementById('passwordGroup');
+
+      // Email
+      const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailReg.test(email.value.trim())) {
+        emailGrp.classList.add('error');
+        emailGrp.classList.remove('success');
+        valid = false;
+      } else {
+        emailGrp.classList.remove('error');
+        emailGrp.classList.add('success');
+      }
+
+      // Password
+      if (password.value.length < 6) {
+        pwdGrp.classList.add('error');
+        pwdGrp.classList.remove('success');
+        valid = false;
+      } else {
+        pwdGrp.classList.remove('error');
+        pwdGrp.classList.add('success');
+      }
+
+      if (valid) {
+        const btn = document.getElementById('loginBtn');
+        btn.classList.add('loading');
+
+        // --- Send to login.php via fetch ---
+        const formData = new FormData();
+        formData.append('email',    email.value.trim());
+        formData.append('password', password.value);
+
+        fetch('php/login.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+          btn.classList.remove('loading');
+          if (data.status === 'success') {
+            // Save user name in localStorage for display
+            localStorage.setItem('luxe_user', data.user.name);
+            localStorage.setItem('luxe_email', data.user.email);
+            window.location.href = 'index.html';
+          } else {
+            alert('Login failed: ' + data.message);
+          }
+        })
+        .catch(err => {
+          btn.classList.remove('loading');
+          alert('Connection error. Make sure XAMPP is running.\n' + err);
+        });
+      }
+    });
+
+    /* ---- Remove error state on input ---- */
+    document.querySelectorAll('.input-wrapper input').forEach(input => {
+      input.addEventListener('input', () => {
+        input.closest('.form-group').classList.remove('error');
+      });
+    });
+  </script>
+
+</body>
+</html>

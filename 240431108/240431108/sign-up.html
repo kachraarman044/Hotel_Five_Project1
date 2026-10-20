@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Luxe Hotel &amp; Dine</title>
+  <link rel="stylesheet" href="css/sign-up.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== ANIMATED BACKGROUND ===== -->
+  <div class="bg-wrapper">
+    <img src="image/header.jpg" alt="background" />
+  </div>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- ===== MAIN CONTAINER ===== -->
+  <div class="signup-container" id="mainContainer">
+    <div class="signup-card">
+
+      <!-- Brand -->
+      <div class="signup-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-user-plus"></i>
+        </div>
+        <h1>Create Account</h1>
+        <p>Join Luxe Hotel &amp; Dine today</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="tab-btn" onclick="window.location.href='login.html'">Login</button>
+        <button class="tab-btn active">Sign Up</button>
+      </div>
+
+      <!-- ===== FORM ===== -->
+      <form id="signupForm" novalidate>
+
+        <!-- Full Name -->
+        <div class="form-group" id="nameGroup">
+          <label for="fullname">Full Name</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user input-icon"></i>
+            <input type="text" id="fullname" placeholder="Enter your full name" autocomplete="name" />
+          </div>
+          <span class="error-msg">Please enter your full name (min 2 characters).</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group" id="emailGroup">
+          <label for="email">Email Address</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <span class="error-msg">Please enter a valid email address.</span>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group" id="phoneGroup">
+          <label for="phone">Phone Number</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-phone input-icon"></i>
+            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" />
+          </div>
+          <span class="error-msg">Please enter a valid phone number (min 10 digits).</span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group" id="passwordGroup">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input type="password" id="password" placeholder="Create a password (min 6 chars)" autocomplete="new-password" />
+            <button type="button" class="toggle-password" onclick="togglePwd('password', this)" aria-label="Toggle password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <span class="error-msg">Password must be at least 6 characters.</span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group" id="confirmGroup">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input type="password" id="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" />
+            <button type="button" class="toggle-password" onclick="togglePwd('confirmPassword', this)" aria-label="Toggle confirm password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <span class="error-msg">Passwords do not match.</span>
+        </div>
+
+        <!-- Terms Checkbox -->
+        <label class="terms-check" id="termsGroup">
+          <input type="checkbox" id="termsCheckbox" />
+          I agree to the <a href="#" onclick="return false;">Terms of Service</a> and <a href="#" onclick="return false;">Privacy Policy</a>
+        </label>
+        <span class="error-msg" id="termsError" style="display:none;font-size:11.5px;color:#ff4757;margin-top:-14px;margin-bottom:12px;">Please accept the terms to continue.</span>
+
+        <!-- Social divider -->
+        <div class="divider"><span>or sign up with</span></div>
+        <div class="social-signup">
+          <a href="#" class="social-btn google" onclick="return false;">
+            <i class="fa-brands fa-google"></i> Google
+          </a>
+          <a href="#" class="social-btn facebook" onclick="return false;">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+        </div>
+
+        <!-- Already have account -->
+        <p class="login-link">
+          Already have an account? <a href="login.html">Sign in</a>
+        </p>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-primary" id="signupBtn">
+          <span class="btn-text">Create Account</span>
+          <div class="spinner"></div>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Back home -->
+    <div class="back-home">
+      <a href="index.html">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== SUCCESS SCREEN (replaces card on success) ===== -->
+  <div class="signup-container" id="successContainer" style="display:none;">
+    <div class="signup-card">
+      <div class="success-screen show">
+        <div class="success-circle">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h2>Account Created!</h2>
+        <p>Welcome to Luxe Hotel &amp; Dine.<br/>Redirecting you to the home page…</p>
+        <button class="btn-primary" onclick="window.location.href='index.html'">
+          <span class="btn-text"><i class="fa-solid fa-arrow-right"></i> Go to Home</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ---- Particles ---- */
+    (function () {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left  = Math.random() * 100 + 'vw';
+        p.style.setProperty('--dur',   (6  + Math.random() * 10) + 's');
+        p.style.setProperty('--delay', (Math.random() * 10)      + 's');
+        const size = (2 + Math.random() * 5) + 'px';
+        p.style.width  = size;
+        p.style.height = size;
+        const colors = ['#fac031','#3498db','#9b59b6','#2ed573','#fff'];
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        container.appendChild(p);
+      }
+    })();
+
+    /* ---- Toggle password visibility ---- */
+    function togglePwd(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon  = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    /* ---- Clear error on input ---- */
+    document.querySelectorAll('#signupForm input').forEach(input => {
+      input.addEventListener('input', () => {
+        input.closest('.form-group')?.classList.remove('error');
+      });
+    });
+
+    /* ---- Form submit — sends data to register.php ---- */
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      const name    = document.getElementById('fullname');
+      const email   = document.getElementById('email');
+      const phone   = document.getElementById('phone');
+      const pwd     = document.getElementById('password');
+      const confirm = document.getElementById('confirmPassword');
+      const terms   = document.getElementById('termsCheckbox');
+
+      const setError   = id => { document.getElementById(id).classList.add('error');    valid = false; };
+      const clearError = id => { document.getElementById(id).classList.remove('error'); document.getElementById(id).classList.add('success'); };
+
+      // Name
+      if (name.value.trim().length < 2)                     setError('nameGroup');    else clearError('nameGroup');
+      // Email
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) setError('emailGroup');   else clearError('emailGroup');
+      // Phone
+      if (phone.value.replace(/\D/g,'').length < 10)        setError('phoneGroup');   else clearError('phoneGroup');
+      // Password
+      if (pwd.value.length < 6)                             setError('passwordGroup'); else clearError('passwordGroup');
+      // Confirm
+      if (confirm.value !== pwd.value || !confirm.value)    setError('confirmGroup'); else clearError('confirmGroup');
+      // Terms
+      const termsErr = document.getElementById('termsError');
+      if (!terms.checked) {
+        termsErr.style.display = 'block';
+        valid = false;
+      } else {
+        termsErr.style.display = 'none';
+      }
+
+      if (!valid) return;
+
+      const btn = document.getElementById('signupBtn');
+      btn.classList.add('loading');
+
+      // --- Send to register.php via fetch ---
+      const formData = new FormData();
+      formData.append('full_name',         name.value.trim());
+      formData.append('email',             email.value.trim());
+      formData.append('phone',             phone.value.trim());
+      formData.append('password',          pwd.value);
+      formData.append('confirm_password',  confirm.value);
+
+      fetch('php/register.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        btn.classList.remove('loading');
+        if (data.status === 'success') {
+          // Show success screen
+          document.getElementById('mainContainer').style.display    = 'none';
+          document.getElementById('successContainer').style.display = 'flex';
+          setTimeout(() => window.location.href = 'index.html', 3000);
+        } else {
+          alert('Registration failed: ' + data.message);
+        }
+      })
+      .catch(err => {
+        btn.classList.remove('loading');
+        alert('Connection error. Make sure XAMPP is running.\n' + err);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews — Luxe Hotel & Dine</title>
+    <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <section id="Home">
+    <nav>
+      <div class="logo"><img src="image/logo.png" alt="Luxe Logo" /></div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-link services">
+          <a href="#">Services <i class="fa-solid fa-chevron-down" style="font-size:11px;margin-left:4px;"></i></a>
+          <ul class="drop-down">
+            <li><a href="popular.html">Popular Hotels</a></li>
+            <li><a href="our_food.html">Our Food</a></li>
+            <li><a href="burger.html"><i class="fa-solid fa-burger" style="color:#fac031;margin-right:8px;"></i>Burgers</a></li>
+            <li><a href="team.html">Our Team</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="room.html">Our Rooms</a></li>
+        <li><a href="galary.html">Gallery</a></li>
+        <li><a href="review.html" style="color:#fac031;">Reviews</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><div class="search-bar"><form action=""><input type="text" name="search" placeholder="Search..." /><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></form></div></li>
+        <li><a href="login.html"><img src="image/login-avatar.png" height="32" width="32" alt="Login" /></a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <div class="page-hero">
+    <img src="image/h3.jpg" alt="Reviews Banner" />
+    <div class="page-hero-content">
+      <h1>Guest <span>Reviews</span></h1>
+      <p>Hear what our guests say about us</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Reviews</span></div>
+    </div>
+  </div>
+
+  <section class="review-section">
+    <div class="section-heading reveal">
+      <h2>What Our <span>Guests</span> Say</h2>
+      <p>Real reviews from real guests</p>
+      <div class="divider-line"><i class="fa-solid fa-quote-left"></i></div>
+    </div>
+
+    <div class="review-grid">
+      <div class="review-card reveal stagger-1">
+        <div class="review-header">
+          <img src="image/review_1.png" alt="Reviewer" />
+          <div>
+            <h4>Sarah Johnson</h4>
+            <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+        </div>
+        <p>"Absolutely wonderful experience! The rooms were spotless and the food was incredible. Will definitely come back!"</p>
+      </div>
+
+      <div class="review-card reveal stagger-2">
+        <div class="review-header">
+          <img src="image/review_2.png" alt="Reviewer" />
+          <div>
+            <h4>Michael Chen</h4>
+            <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+          </div>
+        </div>
+        <p>"Great location, friendly staff, and the spa was heavenly. The only improvement would be faster room service."</p>
+      </div>
+
+      <div class="review-card reveal stagger-3">
+        <div class="review-header">
+          <img src="image/review_3.png" alt="Reviewer" />
+          <div>
+            <h4>Ananya Patel</h4>
+            <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+        </div>
+        <p>"Best hotel experience ever! The presidential suite was breathtaking. Perfect for our honeymoon."</p>
+      </div>
+
+      <div class="review-card reveal stagger-4">
+        <div class="review-header">
+          <img src="image/review_4.png" alt="Reviewer" />
+          <div>
+            <h4>David Wilson</h4>
+            <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+        </div>
+        <p>"Outstanding service from check-in to check-out. The culinary experience was world-class. Highly recommend!"</p>
+      </div>
+    </div>
+
+    <!-- ===== SUBMIT YOUR REVIEW FORM ===== -->
+    <div class="section-heading reveal" style="margin-top:60px;">
+      <h2>Leave Your <span>Review</span></h2>
+      <p>Share your experience with us</p>
+      <div class="divider-line"><i class="fa-solid fa-pen-to-square"></i></div>
+    </div>
+
+    <div style="max-width:600px;margin:0 auto 60px;padding:0 20px;">
+      <form id="reviewForm" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:18px;">
+
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="color:#fac031;font-size:14px;font-weight:600;">Your Name</label>
+          <input type="text" id="rv_name" placeholder="Enter your name"
+            style="padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:15px;outline:none;" required />
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="color:#fac031;font-size:14px;font-weight:600;">Email Address</label>
+          <input type="email" id="rv_email" placeholder="you@example.com"
+            style="padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:15px;outline:none;" required />
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="color:#fac031;font-size:14px;font-weight:600;">Rating</label>
+          <select id="rv_rating"
+            style="padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(30,30,30,0.9);color:#fff;font-size:15px;outline:none;">
+            <option value="5">⭐⭐⭐⭐⭐ — Excellent</option>
+            <option value="4">⭐⭐⭐⭐ — Very Good</option>
+            <option value="3">⭐⭐⭐ — Good</option>
+            <option value="2">⭐⭐ — Fair</option>
+            <option value="1">⭐ — Poor</option>
+          </select>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="color:#fac031;font-size:14px;font-weight:600;">Your Review</label>
+          <textarea id="rv_text" rows="4" placeholder="Write your experience here (min 10 characters)..."
+            style="padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:15px;outline:none;resize:vertical;" required></textarea>
+        </div>
+
+        <button type="submit" id="rvBtn"
+          style="padding:14px;background:linear-gradient(135deg,#fac031,#e6a800);color:#1a1a1a;font-weight:700;font-size:16px;border:none;border-radius:10px;cursor:pointer;transition:opacity 0.3s;">
+          <i class="fa-solid fa-paper-plane"></i> Submit Review
+        </button>
+
+        <div id="rvToast" style="display:none;background:#2ed573;color:#fff;padding:14px 20px;border-radius:10px;text-align:center;font-weight:600;">
+          <i class="fa-solid fa-circle-check"></i> <span id="rvToastMsg">Review submitted!</span>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer_main">
+      <div class="footer_tag"><h2>Locations</h2><p>Sri Lanka</p><p>USA</p><p>India</p><p>Japan</p><p>Italy</p></div>
+      <div class="footer_tag"><h2>Quick Links</h2><p><a href="index.html">Home</a></p><p><a href="about.html">About</a></p><p><a href="our_food.html">Menu</a></p><p><a href="galary.html">Gallery</a></p><p><a href="order.html">Order</a></p></div>
+      <div class="footer_tag"><h2>Contact</h2>
+        <p><img src="image/icons8-phone-48.png" height="20px" width="20px">+91 93275 99254</p>
+        <p><a href="mailto:rathodmilan216@gmail.com"><img src="image/icons8-gmail-48.png" height="20px" width="20px">rathodmilan216@gmail.com</a></p>
+        <p><img src="image/google-maps.png" height="20px" width="20px">Mumbai, India</p>
+      </div>
+      <div class="footer_tag"><h2>Our Services</h2><p>Fast Delivery</p><p>Easy Payments</p><p>24 × 7 Support</p><p>Free Cancellation</p></div>
+      <div class="footer_tag"><h2>Follow Us</h2>
+        <div class="footer-socials"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin-in"></i><i class="fa-brands fa-youtube"></i></div>
+      </div>
+    </div>
+    <p class="end">Design by<span><i class="fa-solid fa-face-grin"></i> Form Kapdiya</span></p>
+  </footer>
+  <button id="scrollTop" title="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 400); });
+    scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    // ---- Review form submit → review.php ----
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name   = document.getElementById('rv_name').value.trim();
+      const email  = document.getElementById('rv_email').value.trim();
+      const rating = document.getElementById('rv_rating').value;
+      const text   = document.getElementById('rv_text').value.trim();
+
+      if (!name || !email || !text || text.length < 10) {
+        alert('Please fill in all fields. Review must be at least 10 characters.');
+        return;
+      }
+
+      const btn = document.getElementById('rvBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+      const formData = new FormData();
+      formData.append('guest_name',  name);
+      formData.append('email',       email);
+      formData.append('rating',      rating);
+      formData.append('review_text', text);
+
+      fetch('php/review.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Review';
+        const toast    = document.getElementById('rvToast');
+        const toastMsg = document.getElementById('rvToastMsg');
+        if (data.status === 'success') {
+          toastMsg.textContent = data.message;
+          toast.style.display  = 'block';
+          document.getElementById('reviewForm').reset();
+          setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        } else {
+          toast.style.background = '#ff4757';
+          toastMsg.textContent   = data.message;
+          toast.style.display    = 'block';
+          setTimeout(() => { toast.style.display = 'none'; toast.style.background = '#2ed573'; }, 4000);
+        }
+      })
+      .catch(err => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Review';
+        alert('Connection error. Make sure XAMPP is running.\n' + err);
+      });
+    });
+  </script>
+</body>
+</html>
